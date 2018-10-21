@@ -1,12 +1,3 @@
-<!-- This is a static file -->
-<!-- served from your routes in server.js -->
-
-<!-- You might want to try something fancier: -->
-<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
-<!-- pug: https://pugjs.org/ -->
-<!-- haml: http://haml.info/ -->
-<!-- hbs(handlebars): http://handlebarsjs.com/ -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,17 +11,19 @@
   <li>) I can pass a string as a parameter, and it will check to see whether that string contains either a unix timestamp or a natural language date (example: January 1, 2016)</li>
   <li>) If it does, it returns both the Unix timestamp and the natural language form of that date.</li>
   <li>) If it does not contain a date or Unix timestamp, it returns null for those properties.</li>
+  <li>) If i don't pass any parameters, it will return current date.</li>
   </ol>
 </div>
 <div class="u">
   <h2>Example Usage :</h2>
   <span>
-    https://timestamp-avi.glitch.me/timestamp/December%2015,%202015<br>
-https://timestamp-avi.glitch.me/timestamp/1450137600
+    <a href="https://timestamp-avi.glitch.me/api/timestamp/December%2015,%202015">https://timestamp-avi.glitch.me/api/timestamp/December%2015,%202015</a><br><br>
+    <a href="https://timestamp-avi.glitch.me/api/timestamp/1450137600">https://timestamp-avi.glitch.me/api/timestamp/1450137600</a><br><br>
+    <a href="https://timestamp-avi.glitch.me/api/timestamp/"> https://timestamp-avi.glitch.me/api/timestamp/</a>
   </span>
   <h2>Example Output :</h2>
   <span>
-    { "unix": 1450137600, "natural": "December 15, 2015" }
+    {"unixtime":1450137600000,"naturaltime":"Tue, 15 Dec 2015 00:00:00 GMT"}
   </span>
 </div>
   </body>

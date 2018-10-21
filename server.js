@@ -15,27 +15,26 @@ var months = ["January", "February", "March", "April", "May", "June", "July", "A
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
-app.get('/timestamp/:tv',function(req,res){
+app.get('/api/timestamp/:tv',function(req,res){
 	var time=req.params.tv;
-	var unix=0;
-	var natural;
+  var d;
 	if(isNaN(time)){
-		var d=new Date(time);
-         unix=d.getTime();
-         if(unix)
-         natural=months[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
-	     else natural=null;
+		d=new Date(time);
+         
 	}
 	else{
-		var d=new Date(time*1000);
-		unix=time*1000;
-		if(unix)
-		natural=months[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
-	    else natural=null;
+		 d=new Date(time*1000);
 	}
-	if(unix==null) natural=null;
-res.json({unixtime:unix/1000,naturaltime:natural});
+  var op;
+	if(!d.getTime()) op={"error":"invalid date"};
+  else op={unixtime:d.getTime(),naturaltime:d.toUTCString()};
+  res.json(op);
 });
+app.get('/api/timestamp/',function(req,res){
+var d=new Date();
+    
+res.json({unixtime:d.getTime(),naturaltime:d.toUTCString()});
+})
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
